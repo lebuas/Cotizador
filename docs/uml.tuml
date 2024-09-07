@@ -1,47 +1,56 @@
 @startuml
+class Cotizar {
+  - precio_materiales
+  -caracteristicas-ventana
+  -costo_ventan
+  - cotizacion
+  -obtener_caracteristicas_ventana()
+  -calcular_costo_ventana()
+  + agregar_ventana()
+  + eliminar_ventana()
+  + cerrar_cotizacion()
+}
+
 class Ventana {
-  -estilo_ventana
-  -ancho_ventana
-  -alto_ventana
-  -naves
-  -vidrios
-  +agregar_ventana()
-  +eliminar_ventana()
-  +calcular_costo_total()
+  - estilo
+  - ancho
+  - alto
+  - nave
+  - vidrio
+  -definir_nave()
+  - definir_vidrio()
+  + obtener_materiales()
 }
 
 class Nave {
-  -ancho
-  -alto
-  -acabado
-  -estilo
-  -esquinas
-  -chapa
-  +personalizar_nave()
-  +calcularCosto()
+  - ancho
+  - alto
+  - acabado
+  - estilo
+  - esquinas
+  - chapa
+  + definir_materiales() : dict
 }
 
 class Vidrio {
-  -ancho
-  -alto
-  -tipo_vidrio
-   -esmerilado
-  +personalizar_vidrio()
-  +calcularCosto()
+  - ancho
+  - alto
+  - tipo_vidrio
+  - esmerilado
+  + definir_materiales() : dict
 }
 
 class Precios {
-  -precio_chapa
-  -precio_esquina
-  -precio_acabado
-  -precio_tipo_vidrio
-  +actualizar_precios()
-  +mostrar_precios()
+  - precio_chapa
+  - precio_esquina
+  - precio_acabado
+  - precio_tipo_vidrio
+  + actualizar_precios()
+  + mostrar_precios()
 }
 
+Cotizar ..> Ventana : usa
+Cotizar ..> Precios : usa
 Ventana *-- Nave
 Ventana *-- Vidrio
-Ventana ..> Precios : usa
-Nave o-- Precios
-Vidrio o-- Precios
 @enduml

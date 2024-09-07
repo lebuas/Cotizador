@@ -2,7 +2,8 @@
   "estilos": [
     "O",
     "XO",
-    "OXO"
+    "OXO",
+    "OTRO"
   ],
   "nave": {
     "Pulido": 50700,

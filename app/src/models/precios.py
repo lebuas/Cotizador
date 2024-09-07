@@ -4,7 +4,8 @@ import json
 
 class Precios:
     def __init__(self):
-        self.ruta_archivo_datos = os.path.join("src", "datos", "ventana.json")
+        self.ruta_archivo_datos = os.path.join(
+            'src', 'datos', 'informacion.json')
         self.diccionario_datos = {}
         self.precios_atributos_nave = {}
         self.precios_atributos_vidrio = {}

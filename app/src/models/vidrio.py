@@ -1,3 +1,4 @@
+
 class Vidrio:
     def __init__(self):
         self.ancho = float()
@@ -6,7 +7,4 @@ class Vidrio:
         self.esmerilado = bool()
 
     def personalizar_vidrio(self):
-        pass
-
-    def calcular_costos(self):
         pass
