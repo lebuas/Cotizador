@@ -1,0 +1,25 @@
+{
+  "estilos": [
+    "O",
+    "XO",
+    "OXO"
+  ],
+  "nave": {
+    "Pulido": 50700,
+    "Lacado Brillante": 54200,
+    "Lacado Mate": 53600,
+    "Anodizado": 57300,
+    "Esquina": 4320,
+    "Chapa": 16200
+  },
+  "vidrio": {
+    "Transparente": 8.25,
+    "Bronce": 9.15,
+    "Azul": 12.75,
+    "esmerilado": 5.20
+  },
+  "descuentos": {
+    "cantidad": 100,
+    "porcentaje": 0.1
+  }
+}
