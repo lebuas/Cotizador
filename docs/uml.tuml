@@ -1,0 +1,47 @@
+@startuml
+class Ventana {
+  -estilo_ventana
+  -ancho_ventana
+  -alto_ventana
+  -naves
+  -vidrios
+  +agregar_ventana()
+  +eliminar_ventana()
+  +calcular_costo_total()
+}
+
+class Nave {
+  -ancho
+  -alto
+  -acabado
+  -estilo
+  -esquinas
+  -chapa
+  +personalizar_nave()
+  +calcularCosto()
+}
+
+class Vidrio {
+  -ancho
+  -alto
+  -tipo_vidrio
+   -esmerilado
+  +personalizar_vidrio()
+  +calcularCosto()
+}
+
+class Precios {
+  -precio_chapa
+  -precio_esquina
+  -precio_acabado
+  -precio_tipo_vidrio
+  +actualizar_precios()
+  +mostrar_precios()
+}
+
+Ventana *-- Nave
+Ventana *-- Vidrio
+Ventana ..> Precios : usa
+Nave o-- Precios
+Vidrio o-- Precios
+@enduml
