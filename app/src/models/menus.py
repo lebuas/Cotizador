@@ -59,7 +59,7 @@ def ingresar_datos_nave():
 
 
 def ingresar_datos_vidrio():
-    acabados = {
+    tipo_vidrio = {
         1: "Transparente",
         2: "Bronce",
         3: "Azul"
@@ -72,4 +72,4 @@ def ingresar_datos_vidrio():
     tipo_vidrio = int(input("Seleccione el tipo de vidrio (1-3): "))
     esmerilado = input("El vidiro es esmerilado? (si/no)").strip().lower()
 
-    return acabados[tipo_vidrio], True if esmerilado == "si" else False
+    return tipo_vidrio[tipo_vidrio], True if esmerilado == "si" else False

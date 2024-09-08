@@ -1,34 +1,44 @@
+
 from src.models import menus
 from src.models import nave
-from src. models import vidrio
+from src.models import vidrio
 
 
 class Ventana:
     def __init__(self):
         self.estilo_ventana = ""
-        self.ancho = 0.0
-        self.alto = 0.0
-        self.cantidad = 0
-        self.naves = {}
-        self.vidrios = {}
+        self.ancho_ventana = 0.0
+        self.alto_ventana = 0.0
+        self.cantidad_ventanas = 0
+        self.nave = {}
+        self.vidrio = {}
 
     def obtener_materiales(self):
+        # Obtener datos de la ventana desde el menú
         datos_ventana = menus.ingresar_datos_ventana()
         self.estilo_ventana = datos_ventana["estilo"]
-        self.ancho = datos_ventana["ancho"]
-        self.alto = datos_ventana["alto"]
-        self.cantidad = datos_ventana["cantidad"]
-        self.nave = self._definir_nave(datos_ventana)
-        self.vidrio = self._definir_vidrio(datos_ventana)
+        self.ancho_ventana = datos_ventana["ancho"]
+        self.alto_ventana = datos_ventana["alto"]
+        self.cantidad_ventanas = datos_ventana["cantidad"]
 
-    def definir_nave(self):
-        datos_nave = menus.ingresar_datos_nave()
-        intacia_nave = nave.Nave()
-        materiales_nave = intacia_nave.personalizar_nave(
-            self.ancho, self.__alto, self.__cantidad)
+        # Crear instancia de Nave y obtener atributos
+        instancia_nave = nave.Nave(
+            self.ancho_ventana, self.alto_ventana, self.estilo_ventana)
+        self.nave = instancia_nave.atributos_nave()
 
-    def definir_vidrio(self):
-        datos_vidrio = menus.ingresar_datos_vidrio()
-        intancia_vidrio = vidrio.Vidrio()
-        materiales_vidrio = intancia_vidrio.personalizar_vidrio(
-            self.__alto, self.__ancho, self.cantidad)
+        # Crear instancia de Vidrio y obtener atributos
+        instancia_vidrio = vidrio.Vidrio(
+            self.ancho_ventana, self.alto_ventana, "Transparente", False)
+        self.vidrio = instancia_vidrio.cantidad_vidrio()
+
+        # Retornar los datos
+        return {
+            "ventana": {
+                "estilo": self.estilo_ventana,
+                "ancho": self.ancho_ventana,
+                "alto": self.alto_ventana,
+                "cantidad": self.cantidad_ventanas
+            },
+            "nave": self.nave,
+            "vidrio": self.vidrio
+        }
