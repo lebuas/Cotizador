@@ -3,25 +3,40 @@ from src.models import ventana
 
 
 class Cotizar:
-    def __init__(self):
+    def __init__(self, contizacion):
         datos = precios.Precios()
         self.precios = datos.cargar_precios()
-        self.cotizacion = {}
-        self.caracteristias_ventana = {}
-        self.costo_estilo_ventana = 0.0
+        self.cotizacion = contizacion
+        self.materiales = {}
 
     def obtener_materiales_ventana(self):
         instancia_ventana = ventana.Ventana()
-        materiales = instancia_ventana.obtener_materiales()
+        self.materiales = instancia_ventana.obtener_materiales()
+        print(self.materiales)
 
     def calcular_costo_ventana(self):
-        self._obtener_caracteristicas_ventana()
+        ventana = self.materiales["ventana"]
+        nave = self.materiales["nave"]
+        vidrio = self.materiales["vidrio"]
 
-    def _agregar_ventana(self):  # agregar ventana a a la cotizacion
+        estilo = ventana["estilo"]
+        acabado = nave["acabado"]
+        cantidad_aluminio = (nave["cantidad_aluminio"]
+                             ) / 100  # pasamos a metros
+
+        tipo_vidrio = vidrio["tipo_vidrio"]
+        esmerilado = vidrio["esmerilado"]
+        cantidad_vidrio = vidrio["cantidad_vidrio"]
+
+        # calcular precios
+        for x in ventana["estilo"]:
+            precios_aluminio = cantidad_aluminio*self.precios[acabado]
+            precios_vidrio = cantidad_vidrio * self.precios[tipo_vidrio]
+            precio_chapa = precios["nave"]["chapa"] if x == "X" else 0
+            precio_esmerilado = precios["vidrio"]["esmerilado"] if vidrio["esmerilado"] == True else False
+
+    def eliminar_ventana(self):  # elimianr ventana de contizacion
         pass
 
-    def _eliminar_ventana(self):  # elimianr ventana de contizacion
-        pass
-
-    def _cerrar_cotizacion(self):
+    def cerrar_cotizacion(self):
         pass

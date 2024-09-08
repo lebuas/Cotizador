@@ -5,7 +5,6 @@ def ingresar_datos_ventana():
         "2": "XO",
         "3": "OXO",
         "4": "OXXO",
-        "5": "Otro tipo"
     }
 
     while True:
@@ -14,7 +13,6 @@ def ingresar_datos_ventana():
         print("2. XO")
         print("3. OXO")
         print("4. OXXO")
-        print("5. Otro tipo")
 
         # Entrada del estilo como cadena
         estilo = input("Ingrese el estilo de la ventana (1-5): ")
@@ -31,7 +29,7 @@ def ingresar_datos_ventana():
             cant = int(input("Ingrese cantidad de ventanas que desea hacer: "))
         except ValueError:
             print("Error: Por favor ingrese un número válido.")
-            continue  # Vuelve al inicio del bucle para pedir la entrada de nuevo
+            continue
 
         return {
             "estilo": estilos_ventana[estilo],
@@ -60,16 +58,31 @@ def ingresar_datos_nave():
 
 def ingresar_datos_vidrio():
     tipo_vidrio = {
-        1: "Transparente",
-        2: "Bronce",
-        3: "Azul"
+        "1": "Transparente",
+        "2": "Bronce",
+        "3": "Azul"
     }
 
     print("==Tipos de Vidrio==")
     print("1. Transparente")
     print("2. Bronce")
     print("3. Azul")
-    tipo_vidrio = int(input("Seleccione el tipo de vidrio (1-3): "))
-    esmerilado = input("El vidiro es esmerilado? (si/no)").strip().lower()
 
-    return tipo_vidrio[tipo_vidrio], True if esmerilado == "si" else False
+    while True:
+        try:
+            seleccion = input("Seleccione el tipo de vidrio (1-3): ").strip()
+            if seleccion not in tipo_vidrio:
+                raise ValueError(
+                    "Opción inválida. Seleccione un número entre 1 y 3.")
+
+            tipo = tipo_vidrio[seleccion]
+
+            esmerilado = input(
+                "El vidrio es esmerilado? (si/no): ").strip().lower()
+            if esmerilado not in ["si", "no"]:
+                raise ValueError("Respuesta inválida. Ingrese 'si' o 'no'.")
+
+            return tipo, esmerilado == "si"
+
+        except ValueError as e:
+            print(e)

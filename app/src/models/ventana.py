@@ -28,8 +28,8 @@ class Ventana:
 
         # Crear instancia de Vidrio y obtener atributos
         instancia_vidrio = vidrio.Vidrio(
-            self.ancho_ventana, self.alto_ventana, "Transparente", False)
-        self.vidrio = instancia_vidrio.cantidad_vidrio()
+            self.ancho_ventana, self.alto_ventana, self.estilo_ventana)
+        self.vidrio = instancia_vidrio.atributos_vidrio()
 
         # Retornar los datos
         return {

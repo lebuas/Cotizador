@@ -10,7 +10,7 @@ class Nave:
         self.ancho_perfil = 2.5  # cm
         self.tamano_esquinas = 4  # cm
 
-    def antributos_nave(self):
+    def atributos_nave(self):
         self.acabado = menus.ingresar_datos_nave()
         cantidad_aluminio = self.cantida_aluminio()
 
