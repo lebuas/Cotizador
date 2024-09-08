@@ -1,10 +1,13 @@
 from src.models import cotizar
+from src.models import precios
+from src.models import actualizar
 
 # Definir datos_cotizacion como una variable global
 datos_cotizacion = []
 
 
 def mostrar_menu():
+    print(" ")
     print("=== Menú de Opciones ===")
     print("1. Cotizar ventana")
     print("2. Cerrar cotización")
@@ -16,24 +19,31 @@ def mostrar_menu():
 
 def main():
     global datos_cotizacion
+    instancia = cotizar.Cotizar(datos_cotizacion)
 
     while True:
         mostrar_menu()
-        opcion = input("Seleccione una opción (0-4): ")
+        opcion = input("Seleccione una opción (0-4): ").strip()
 
         if opcion == "1":
-            instancia = cotizar.Cotizar(datos_cotizacion)
-            datos_cotizacion = instancia.obtener_materiales_ventana()
+            instancia.obtener_materiales_ventana()
+            instancia.calcular_costo_ventana()
             print("Datos de cotización actualizados.")
 
         elif opcion == "2":
-            print("listo")
+            instancia.cerrar_cotizacion()
+            print("Cotización cerrada.")
+            break
 
         elif opcion == "3":
-            print("listo")
+            instancia_precio = precios.Precios()
+            # Asegúrate de que este método esté implementado
+            instancia_precio.mostrar_precios()
 
         elif opcion == "4":
-            print("Actualizar precios de los materiales.")
+            actualizar_precion = actualizar.Actualizar()
+            actualizar_precion.actualizar_precios()
+            print("Precios de los materiales actualizados.")
 
         elif opcion == "0":
             print("Saliendo del programa.")

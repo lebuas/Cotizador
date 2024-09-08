@@ -1,4 +1,3 @@
-
 def ingresar_datos_ventana():
     estilos_ventana = {
         "1": "O",
@@ -8,27 +7,25 @@ def ingresar_datos_ventana():
     }
 
     while True:
-        print("==Tipos de ventana==")
+        print("\n== Tipos de ventana ==")
         print("1. O")
         print("2. XO")
         print("3. OXO")
         print("4. OXXO")
 
-        # Entrada del estilo como cadena
-        estilo = input("Ingrese el estilo de la ventana (1-5): ")
+        estilo = input("Ingrese el estilo de la ventana (1-4): ")
 
-        # Validar si el estilo ingresado es válido
         if estilo not in estilos_ventana:
-            print("Error: Estilo no válido. Intente de nuevo.")
-            continue  # Vuelve al inicio del bucle para pedir la entrada de nuevo
+            print("Error: Estilo no válido. Intente de nuevo.\n")
+            continue
 
         try:
             ancho = float(
-                input("Ingrese el ancho de la ventana (en metros): "))
-            alto = float(input("Ingrese el alto de la ventana (en metros): "))
+                input("Ingrese el ancho de la ventana (en cm): "))
+            alto = float(input("Ingrese el alto de la ventana (en cm): "))
             cant = int(input("Ingrese cantidad de ventanas que desea hacer: "))
         except ValueError:
-            print("Error: Por favor ingrese un número válido.")
+            print("Error: Por favor ingrese un número válido.\n")
             continue
 
         return {
@@ -47,13 +44,23 @@ def ingresar_datos_nave():
         4: "Anodizado"
     }
 
-    print("==Tipos Telminado de Acabdo para las naves==")
-    print("1. Pulido")
-    print("2. Lacado Brillante")
-    print("3. Lacado Mate")
-    print("4. Anodizado")
-    tipo_acabado = int(input("Seleccione el tipo de vidrio (1-4): "))
-    return acabados[tipo_acabado]
+    while True:
+        print("\n== Tipos de acabado para las naves ==")
+        print("1. Pulido")
+        print("2. Lacado Brillante")
+        print("3. Lacado Mate")
+        print("4. Anodizado")
+
+        try:
+            tipo_acabado = int(input("Seleccione el tipo de acabado (1-4): "))
+            if tipo_acabado not in acabados:
+                raise ValueError(
+                    "Opción inválida. Seleccione un número entre 1 y 4.")
+        except ValueError as e:
+            print(e, "\n")
+            continue
+
+        return acabados[tipo_acabado]
 
 
 def ingresar_datos_vidrio():
@@ -63,7 +70,7 @@ def ingresar_datos_vidrio():
         "3": "Azul"
     }
 
-    print("==Tipos de Vidrio==")
+    print("\n== Tipos de Vidrio ==")
     print("1. Transparente")
     print("2. Bronce")
     print("3. Azul")
@@ -85,4 +92,4 @@ def ingresar_datos_vidrio():
             return tipo, esmerilado == "si"
 
         except ValueError as e:
-            print(e)
+            print(e, "\n")

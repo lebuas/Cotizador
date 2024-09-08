@@ -19,8 +19,8 @@ class Nave:
                 }
 
     def cantida_aluminio(self):
-        alto_en_aluminio = self.alto_nave - 3
-        ancho_en_aluminio = self.ancho_nave - 3
+        alto_en_aluminio = self.alto_nave - 6
+        ancho_en_aluminio = self.ancho_nave - 6
         perimetro = (2*alto_en_aluminio) + (2*ancho_en_aluminio)
 
         longitud_cm = perimetro
